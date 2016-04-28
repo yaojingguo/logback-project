@@ -1,0 +1,29 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+repositories {
+  mavenLocal()
+  maven {
+    url "http://maven.oschina.net/content/groups/public/"
+  }
+  mavenCentral()
+  jcenter()
+}
+
+dependencies {
+  testCompile 'junit:junit:4.12'
+  testCompile 'com.google.truth:truth:0.27'
+  
+  
+  compile 'ch.qos.logback:logback-classic:1.1.7'
+  compile 'ch.qos.logback:logback-core:1.1.7'
+  compile 'org.slf4j:slf4j-api:1.7.21'
+}
+
+[compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
+
+eclipse.classpath {
+  defaultOutputDir = file('build-eclipse')
+}
+
+test.testLogging.showStandardStreams = true
